@@ -1,0 +1,44 @@
+{
+    "name": "QuantPCIG2_onepass",
+    "save_dir": "./",
+    "dataset": {
+        "name": "dataset_color2",
+        "train": "../../0DataZoo/Dataset_C/VOC2012/Train/target",
+        "val": "../../0DataZoo/Dataset_C/VOC2012/Val/target",
+        "test": "../../0DataZoo/Dataset_C/VOC2012/Test/target"
+    },
+    "model": {
+        "encoder": "EncodeNet",
+        "decoder": "DecodeNetPC2"
+    },
+    "trainer": {
+        "seed": 131,
+        "batch_size": 16,
+        "n_epochs": 120,
+        "lr": 0.0002,
+        "weight_decay": 0,
+        "lr_sheduler": {
+            "factor": 0.5,
+            "patience": 3,
+            "threshold": 0.001,
+            "threshold_mode": "rel",
+            "cooldown": 0
+        },
+        "loss_func": "loss_pcgray2",
+        "loss_weight": {
+            "reconLoss": 3.0,
+            "gradLoss": 0.5,
+            "mappingLoss": 1.0,
+            "contrastLoss": 0.001,
+            "totalLoss": 1.0
+        },
+        "need_valid": true,
+        "display_iters": 100,
+        "save_epochs": 1
+    },
+    "tester": {
+        "with_cuda": true,
+        "test_code": 2,
+        "batch_size": 1
+    }
+}

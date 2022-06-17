@@ -1,0 +1,1 @@
+nohup srun --gres=gpu:2 -c 8 -w gpu9 -p gpu_24h python quantPCIG2_train.py > out_quantPCIG2 &
